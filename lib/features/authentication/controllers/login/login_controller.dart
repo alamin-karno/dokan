@@ -2,6 +2,7 @@ import 'package:dokan/core/utils/constants/constants.dart';
 import 'package:dokan/core/utils/helpers/helpers.dart';
 import 'package:dokan/core/utils/popups/popups.dart';
 import 'package:dokan/data/repositories/repositories.dart';
+import 'package:dokan/features/shop/shop.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -34,10 +35,10 @@ class LoginController extends GetxController {
       }
 
       // FORM VALIDATION
-      if (!loginFormKey.currentState!.validate()) {
+      /* if (!loginFormKey.currentState!.validate()) {
         AppFullScreenLoader.stopLoading();
         return;
-      }
+      }*/
 
       // LOGIN USER USING EMAIL AND PASSWORD
       /* await _authRepository.signInWithUserNameAndPassword(
@@ -49,7 +50,8 @@ class LoginController extends GetxController {
       AppFullScreenLoader.stopLoading();
 
       // REDIRECT
-      _authRepository.screenRedirection();
+      // _authRepository.screenRedirection();
+      Get.offAll(() => const MainNavigationMenuScreen());
     } catch (e) {
       AppFullScreenLoader.stopLoading();
       AppLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());

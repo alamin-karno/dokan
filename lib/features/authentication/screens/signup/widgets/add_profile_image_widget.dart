@@ -41,9 +41,12 @@ class AddProfileImageWidget extends StatelessWidget {
               clipBehavior: Clip.antiAlias,
               child: InkWell(
                 onTap: () {},
-                child: SizedBox(
+                child: Container(
                   height: 34,
                   width: 34,
+                  decoration: BoxDecoration(
+                    gradient: AppColors.linearGradiant,
+                  ),
                   child: Center(
                     child: SvgPicture.asset(
                       AppImages.camera,

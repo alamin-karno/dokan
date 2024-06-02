@@ -122,7 +122,6 @@ class LoginFormWidget extends StatelessWidget {
                     ?.copyWith(color: AppColors.darkerGrey),
               ),
             ),
-            const SizedBox(height: AppSizes.spaceBtwSections),
           ],
         ),
       ),

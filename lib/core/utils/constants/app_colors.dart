@@ -4,12 +4,12 @@ class AppColors {
   /// App theme colors
   static const Color primary = Color(0xFFF75F55);
   static const Color secondary = Color(0xFFFFFFFF);
-  static const Color accent = Color(0xFFF75F55);
+  static const Color accent = Color(0xFFFF679B);
 
   /// Gradiant Colors
   static const linearGradiant = LinearGradient(
-    begin: Alignment(0, 0),
-    end: Alignment(0.707, -0.707),
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
     colors: [
       Color(0xFFF2709C),
       Color(0xFFFF9472),
@@ -25,6 +25,7 @@ class AppColors {
   static const Color textPrimary = Color(0xFF333333);
   static const Color textSecondary = Color(0xFF6C757D);
   static const Color textWhite = Colors.white;
+  static const Color textLink = Color(0xFF2893E3);
 
   /// Button colors
   static const Color buttonPrimary = Color(0xFF4b68ff);

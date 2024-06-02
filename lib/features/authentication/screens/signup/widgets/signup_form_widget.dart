@@ -1,3 +1,4 @@
+import 'package:dokan/core/common/widgets/widgets.dart';
 import 'package:dokan/core/utils/constants/constants.dart';
 import 'package:dokan/core/utils/validators/validators.dart';
 import 'package:dokan/features/authentication/authentication.dart';
@@ -112,7 +113,7 @@ class SinUpFormWidget extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(height: AppSizes.spaceBtwSections),
+            const SizedBox(height: AppSizes.spaceBtwInputFields),
             Obx(
               () => Material(
                 elevation: 2,
@@ -159,6 +160,29 @@ class SinUpFormWidget extends StatelessWidget {
                 onPressed: () => controller.signup(),
                 child: const Text(AppStrings.createAccount),
               ),
+            ),
+            const SizedBox(height: AppSizes.spaceBtwSections),
+            const SocialButtonsWidget(),
+            const SizedBox(height: AppSizes.spaceBtwSections),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(AppStrings.alreadyHaveAccount,
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyLarge
+                        ?.copyWith(color: AppColors.darkerGrey)),
+                TextButton(
+                  onPressed: () => Get.back(),
+                  child: Text(
+                    AppStrings.signIn,
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyLarge
+                        ?.copyWith(color: AppColors.textLink),
+                  ),
+                ),
+              ],
             ),
           ],
         ),
