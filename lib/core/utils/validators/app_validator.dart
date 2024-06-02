@@ -1,7 +1,7 @@
 class AppValidator {
   static String? validateEmptyText(String? fieldName, String? value) {
     if (value == null || value.isEmpty) {
-      return '$fieldName is required.';
+      return '  $fieldName is required.';
     }
     return null;
   }
@@ -44,6 +44,19 @@ class AppValidator {
     // Check for special characters
     if (!value.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]'))) {
       return '  Password must contain at least one special character.';
+    }
+
+    return null;
+  }
+
+  static String? validateConfirmPassword(String? password, String? value) {
+    if (value == null || value.isEmpty) {
+      return '  Confirm Password is required.';
+    }
+
+    // Check for minimum password length
+    if (password != value) {
+      return '  Confirm Password not match.';
     }
 
     return null;

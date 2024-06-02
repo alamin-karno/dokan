@@ -25,7 +25,7 @@ class LoginFormWidget extends StatelessWidget {
               elevation: 2,
               clipBehavior: Clip.antiAlias,
               color: AppColors.white,
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(AppSizes.borderRadiusLg),
               child: TextFormField(
                 controller: controller.email,
                 validator: (value) => AppValidator.validateEmail(value),
@@ -39,6 +39,11 @@ class LoginFormWidget extends StatelessWidget {
                     fit: BoxFit.none,
                   ),
                   labelText: AppStrings.email,
+                  border: InputBorder.none,
+                  enabledBorder: InputBorder.none,
+                  focusedBorder: InputBorder.none,
+                  errorBorder: InputBorder.none,
+                  focusedErrorBorder: InputBorder.none,
                 ),
               ),
             ),
@@ -48,7 +53,7 @@ class LoginFormWidget extends StatelessWidget {
                 elevation: 2,
                 clipBehavior: Clip.antiAlias,
                 color: AppColors.white,
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(AppSizes.borderRadiusLg),
                 child: TextFormField(
                   controller: controller.password,
                   validator: (value) => AppValidator.validatePassword(value),
@@ -62,7 +67,6 @@ class LoginFormWidget extends StatelessWidget {
                       width: AppSizes.iconSm,
                       fit: BoxFit.none,
                     ),
-                    labelText: AppStrings.password,
                     suffixIcon: IconButton(
                       onPressed: () => controller.hidePassword.value =
                           !controller.hidePassword.value,
@@ -72,6 +76,12 @@ class LoginFormWidget extends StatelessWidget {
                             : Iconsax.eye,
                       ),
                     ),
+                    labelText: AppStrings.password,
+                    border: InputBorder.none,
+                    enabledBorder: InputBorder.none,
+                    focusedBorder: InputBorder.none,
+                    errorBorder: InputBorder.none,
+                    focusedErrorBorder: InputBorder.none,
                   ),
                 ),
               ),
@@ -103,8 +113,7 @@ class LoginFormWidget extends StatelessWidget {
             const SocialButtonsWidget(),
             const SizedBox(height: AppSizes.spaceBtwSections),
             TextButton(
-              // onPressed: () => Get.to(() => const ForgetPasswordScreen()),
-              onPressed: () {},
+              onPressed: () => Get.to(() => const SignUpScreen()),
               child: Text(
                 AppStrings.createAccount,
                 style: Theme.of(context)

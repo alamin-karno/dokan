@@ -6,8 +6,8 @@ class AppRoutes {
   static final pages = [
     //GetPage(name: RouteStrings.home, page: () => const HomeScreen()),
     //GetPage(name: RouteStrings.store, page: () => const StoreScreen()),
-    // GetPage(name: RouteStrings.signup, page: () => const SignUpScreen()),,
     //GetPage(name: RouteStrings.store, page: () => const StoreScreen()),
-    GetPage(name: RouteStrings.signIn, page: () => const LoginScreen())
+    GetPage(name: RouteStrings.signIn, page: () => const LoginScreen()),
+    GetPage(name: RouteStrings.signup, page: () => const SignUpScreen()),
   ];
 }

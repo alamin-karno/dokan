@@ -7,8 +7,10 @@ class AppImages {
   static const String google = "assets/icons/google.svg";
 
   // Icons
+  static const String camera = "assets/icons/camera.svg";
   static const String email = "assets/icons/email.svg";
   static const String password = "assets/icons/password.svg";
+  static const String people = "assets/icons/people.svg";
 
   // - Lottie Animations
   static String dockerAnimation =
