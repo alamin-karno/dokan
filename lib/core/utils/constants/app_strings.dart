@@ -1,7 +1,16 @@
 class AppStrings {
   // -- Authentication Forms
   static const String name = "Name";
+  static const String fullName = "Full Name";
+  static const String fullNameHints = "William Bennett";
+  static const String streetAddress = "Street Address";
+  static const String streetAddressHints = "465 Nolan Causeway Suite 079";
+  static const String aptSuite = "Apt, Suite, Bldg (optional)";
+  static const String aptSuiteHints = "Unit 512";
+  static const String zipCode = "Zip Code";
+  static const String zipCodeHints = "77017";
   static const String email = "E-Mail";
+  static const String emailHints = "youremail@xmail.com";
   static const String password = "Password";
   static const String confirmPassword = "Confirm Password";
   static const String rememberMe = "Remember Me";

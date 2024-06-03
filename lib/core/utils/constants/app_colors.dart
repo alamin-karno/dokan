@@ -31,9 +31,11 @@ class AppColors {
   static const Color textWhite = Colors.white;
   static const Color textLink = Color(0xFF2893E3);
   static const Color textGrey = Color(0xFF535353);
+  static const Color textInputField = Color(0xFF535353);
 
   /// Button colors
   static const Color buttonPrimary = Color(0xFF4b68ff);
+  static const Color buttonGreen = Color(0xFF1ABC9C);
   static const Color buttonSecondary = Color(0xFF6C757D);
   static const Color buttonDisabled = Color(0xFFC4C4C4);
 

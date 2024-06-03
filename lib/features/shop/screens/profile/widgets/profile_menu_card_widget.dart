@@ -1,12 +1,14 @@
 import 'package:dokan/core/utils/constants/constants.dart';
 import 'package:dokan/features/shop/shop.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class ProfileMenuCardWidget extends StatelessWidget {
   const ProfileMenuCardWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = AccountController.instance;
     return Material(
       elevation: 2,
       color: AppColors.white,
@@ -19,11 +21,29 @@ class ProfileMenuCardWidget extends StatelessWidget {
           vertical: AppSizes.md,
         ),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            MenuItemWidget(
-              title: 'Account',
-              icon: AppImages.account,
-              onPressed: () {},
+            Obx(
+              () => MenuItemWidget(
+                title: 'Account',
+                icon: AppImages.account,
+                arrowIcon: controller.showEditAccount.value
+                    ? Icons.keyboard_arrow_down_outlined
+                    : Icons.keyboard_arrow_right_rounded,
+                onPressed: () {
+                  controller.onAccountPressed(controller.showEditAccount.value);
+                },
+              ),
+            ),
+            Obx(
+              () => AnimatedCrossFade(
+                firstChild: Container(height: 0),
+                secondChild: const UpdateProfileFormWidget(),
+                crossFadeState: controller.showEditAccount.value
+                    ? CrossFadeState.showSecond
+                    : CrossFadeState.showFirst,
+                duration: const Duration(milliseconds: 400),
+              ),
             ),
             const Divider(),
             MenuItemWidget(

@@ -7,10 +7,12 @@ class MenuItemWidget extends StatelessWidget {
     super.key,
     required this.title,
     required this.icon,
+    this.arrowIcon = Icons.keyboard_arrow_right_rounded,
     this.onPressed,
   });
 
   final String title, icon;
+  final IconData arrowIcon;
   final Function()? onPressed;
 
   @override
@@ -27,8 +29,8 @@ class MenuItemWidget extends StatelessWidget {
         ),
       ),
       title: Text(title, style: Theme.of(context).textTheme.titleMedium),
-      trailing: const Icon(
-        Icons.keyboard_arrow_right_rounded,
+      trailing: Icon(
+        arrowIcon,
         size: AppSizes.iconLg,
         color: AppColors.iconArrowColor,
       ),
