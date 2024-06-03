@@ -23,7 +23,7 @@ class AppColors {
 
   /// Text colors
   static const Color textPrimary = Color(0xFF333333);
-  static const Color textSecondary = Color(0xFF6C757D);
+  static const Color textSecondary = Color(0xFF818995);
   static const Color textWhite = Colors.white;
   static const Color textLink = Color(0xFF2893E3);
 
@@ -31,6 +31,11 @@ class AppColors {
   static const Color buttonPrimary = Color(0xFF4b68ff);
   static const Color buttonSecondary = Color(0xFF6C757D);
   static const Color buttonDisabled = Color(0xFFC4C4C4);
+
+  /// Icon Colors
+  static const Color iconColor = Color(0xFF222455);
+  static const Color ratingIcon = Color(0xFFD3D8E5);
+  static const Color iconSecondaryColor = Color(0xFFA0A9BD);
 
   /// Border colors
   static const Color borderPrimary = Color(0xFFD9D9D9);

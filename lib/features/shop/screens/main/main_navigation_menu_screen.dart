@@ -15,11 +15,12 @@ class MainNavigationMenuScreen extends StatelessWidget {
     final controller = Get.put(NavigationMenuController());
     return Scaffold(
       backgroundColor: AppColors.primaryBackground,
-      body: controller.screens[controller.selectedIndex],
+      body: Obx(() => controller.screens[controller.selectedIndex]),
       bottomNavigationBar: Obx(
         () => CurvedNavigationBar(
           key: controller.bottomNavKey,
-          backgroundColor: AppColors.primaryBackground,
+          backgroundColor: Colors.transparent,
+          buttonBackgroundColor: Colors.transparent,
           color: AppColors.white,
           index: 2,
           letIndexChange: (value) {

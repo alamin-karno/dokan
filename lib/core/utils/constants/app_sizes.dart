@@ -39,4 +39,7 @@ class AppSizes {
   static const double defaultSpace = 24.0;
   static const double spaceBtwItems = 16.0;
   static const double spaceBtwSections = 32.0;
+
+  /// Grid view spacing
+  static const double gridViewSpacing = 16.0;
 }
