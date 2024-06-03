@@ -3,12 +3,15 @@ import 'package:dokan/core/utils/constants/constants.dart';
 import 'package:dokan/features/shop/shop.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(HomeController());
+    controller.loadJsonData(context);
     return Scaffold(
       backgroundColor: AppColors.primaryBackground,
       appBar: AppBar(
@@ -51,11 +54,28 @@ class HomeScreen extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(
                   horizontal: AppSizes.xs,
                 ),
-                child: AppGridLayout(
-                  mainAxisExtent: 300,
-                  itemCount: 10,
-                  itemBuilder: (_, index) {
-                    return const ProductCardWidget();
+                child: Obx(
+                  () {
+                    if (controller.isLoading.value) {
+                      return const AppVerticalProductShimmer();
+                    }
+                    if (controller.products.isEmpty) {
+                      return Center(
+                        child: Text(
+                          'No Data Found!',
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        ),
+                      );
+                    }
+                    return AppGridLayout(
+                      mainAxisExtent: 270,
+                      itemCount: controller.products.length,
+                      itemBuilder: (_, index) {
+                        return ProductCardWidget(
+                          product: controller.products[index],
+                        );
+                      },
+                    );
                   },
                 ),
               ),

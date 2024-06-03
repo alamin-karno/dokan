@@ -1,5 +1,17 @@
 export 'controllers/account/account_controller.dart';
+export 'controllers/home/home_controller.dart';
 export 'controllers/navigation_menu/navigation_menu_controller.dart';
+export 'models/category_model.dart';
+export 'models/dimension_model.dart';
+export 'models/download_model.dart';
+export 'models/image_model.dart';
+export 'models/link_collection_model.dart';
+export 'models/link_model.dart';
+export 'models/link_self_model.dart';
+export 'models/meta_data_model.dart';
+export 'models/product_model.dart';
+export 'models/store_address_model.dart';
+export 'models/store_model.dart';
 export 'screens/home/home_screen.dart';
 export 'screens/home/widgets/home_search_filter_widget.dart';
 export 'screens/main/main_navigation_menu_screen.dart';
