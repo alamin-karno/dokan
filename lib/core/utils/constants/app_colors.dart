@@ -16,7 +16,11 @@ class AppColors {
     ],
   );
 
+  /// Divider colors
+  static const Color dividerLight = Color(0xFFD8D8D8);
+
   /// Background colors
+
   static const Color light = Color(0xFFF6F6F6);
   static const Color dark = Color(0xFF272727);
   static const Color primaryBackground = Color(0xFFF8F8F8);
@@ -26,6 +30,7 @@ class AppColors {
   static const Color textSecondary = Color(0xFF818995);
   static const Color textWhite = Colors.white;
   static const Color textLink = Color(0xFF2893E3);
+  static const Color textGrey = Color(0xFF535353);
 
   /// Button colors
   static const Color buttonPrimary = Color(0xFF4b68ff);
@@ -36,6 +41,8 @@ class AppColors {
   static const Color iconColor = Color(0xFF222455);
   static const Color ratingIcon = Color(0xFFD3D8E5);
   static const Color iconSecondaryColor = Color(0xFFA0A9BD);
+  static const Color iconProfileColor = Color(0xFF7C8592);
+  static const Color iconArrowColor = Color(0xFF899AA2);
 
   /// Border colors
   static const Color borderPrimary = Color(0xFFD9D9D9);

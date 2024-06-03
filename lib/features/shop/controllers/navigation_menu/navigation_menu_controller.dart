@@ -18,9 +18,9 @@ class NavigationMenuController extends GetxController {
 
   final screens = [
     const HomeScreen(),
-    Container(),
-    Container(),
-    Container(),
-    Container(),
+    const Center(child: Text('Category')),
+    const Center(child: Text('Search')),
+    const Center(child: Text('Cart')),
+    const ProfileScreen(),
   ];
 }

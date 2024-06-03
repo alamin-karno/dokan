@@ -46,6 +46,7 @@ class CircularButtonWidget extends StatelessWidget {
           ],
         ),
         alignment: Alignment.center,
+        clipBehavior: Clip.antiAlias,
         child: child ?? Icon(icon, color: Colors.white, size: iconSize),
       ),
     );
