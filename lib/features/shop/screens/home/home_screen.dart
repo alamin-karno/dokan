@@ -52,7 +52,7 @@ class HomeScreen extends StatelessWidget {
                   horizontal: AppSizes.xs,
                 ),
                 child: AppGridLayout(
-                  mainAxisExtent: 295,
+                  mainAxisExtent: 300,
                   itemCount: 10,
                   itemBuilder: (_, index) {
                     return const ProductCardWidget();
