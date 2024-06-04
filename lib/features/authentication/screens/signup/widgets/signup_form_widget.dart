@@ -27,7 +27,7 @@ class SinUpFormWidget extends StatelessWidget {
               color: AppColors.white,
               borderRadius: BorderRadius.circular(AppSizes.borderRadiusLg),
               child: TextFormField(
-                controller: controller.name,
+                controller: controller.username,
                 validator: (value) =>
                     AppValidator.validateEmptyText(AppStrings.name, value),
                 expands: false,

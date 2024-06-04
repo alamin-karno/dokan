@@ -1,6 +1,6 @@
 class AppStrings {
   // -- Authentication Forms
-  static const String name = "Name";
+  static const String name = "Username";
   static const String fullName = "Full Name";
   static const String fullNameHints = "William Bennett";
   static const String streetAddress = "Street Address";
