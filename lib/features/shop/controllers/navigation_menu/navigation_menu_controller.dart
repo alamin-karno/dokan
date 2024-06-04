@@ -1,4 +1,5 @@
 import 'package:curved_labeled_navigation_bar/curved_navigation_bar.dart';
+import 'package:dokan/features/personalization/personalization.dart';
 import 'package:dokan/features/shop/shop.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

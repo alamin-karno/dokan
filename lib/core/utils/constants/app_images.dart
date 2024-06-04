@@ -11,6 +11,8 @@ class AppImages {
   static const String camera = "assets/icons/camera.svg";
   static const String cart = "assets/icons/cart.svg";
   static const String category = "assets/icons/category.svg";
+  static const String checkbox = "assets/icons/checkbox.svg";
+  static const String checkboxSelected = "assets/icons/checkbox-selected.svg";
   static const String email = "assets/icons/email.svg";
   static const String filter = "assets/icons/filter.svg";
   static const String home = "assets/icons/home.svg";

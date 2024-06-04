@@ -59,7 +59,7 @@ class HomeScreen extends StatelessWidget {
                     if (controller.isLoading.value) {
                       return const AppVerticalProductShimmer();
                     }
-                    if (controller.products.isEmpty) {
+                    if (controller.filterProducts.isEmpty) {
                       return Center(
                         child: Text(
                           'No Data Found!',
@@ -69,10 +69,10 @@ class HomeScreen extends StatelessWidget {
                     }
                     return AppGridLayout(
                       mainAxisExtent: 270,
-                      itemCount: controller.products.length,
+                      itemCount: controller.filterProducts.length,
                       itemBuilder: (_, index) {
                         return ProductCardWidget(
-                          product: controller.products[index],
+                          product: controller.filterProducts[index],
                         );
                       },
                     );

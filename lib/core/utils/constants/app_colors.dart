@@ -19,8 +19,10 @@ class AppColors {
   /// Divider colors
   static const Color dividerLight = Color(0xFFD8D8D8);
 
-  /// Background colors
+  // Bottom Sheet Bar
+  static const Color bottomSheetBar = Color(0xFFFFD3DD);
 
+  /// Background colors
   static const Color light = Color(0xFFF6F6F6);
   static const Color dark = Color(0xFF272727);
   static const Color primaryBackground = Color(0xFFF8F8F8);
