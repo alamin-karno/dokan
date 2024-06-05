@@ -44,7 +44,7 @@ class AddProfileImageWidget extends StatelessWidget {
                 child: Container(
                   height: 34,
                   width: 34,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     gradient: AppColors.linearGradiant,
                   ),
                   child: Center(

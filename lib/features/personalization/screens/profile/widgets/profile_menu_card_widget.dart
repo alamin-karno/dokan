@@ -1,6 +1,5 @@
 import 'package:dokan/core/utils/constants/constants.dart';
 import 'package:dokan/features/personalization/personalization.dart';
-import 'package:dokan/features/shop/shop.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

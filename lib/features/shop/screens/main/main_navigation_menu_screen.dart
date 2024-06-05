@@ -13,6 +13,7 @@ class MainNavigationMenuScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(NavigationMenuController());
+    bool isKeyboardOpen = MediaQuery.of(context).viewInsets.bottom != 0;
     return Scaffold(
       backgroundColor: AppColors.primaryBackground,
       body: Obx(() => controller.screens[controller.selectedIndex]),
@@ -67,16 +68,18 @@ class MainNavigationMenuScreen extends StatelessWidget {
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: CircularButtonWidget(
-        onTap: () {
-          controller.onChangeIndex(2);
-        },
-        child: SvgPicture.asset(
-          AppImages.search,
-          height: AppSizes.iconMd,
-          width: AppSizes.iconMd,
-        ),
-      ),
+      floatingActionButton: isKeyboardOpen
+          ? null
+          : CircularButtonWidget(
+              onTap: () {
+                controller.onChangeIndex(2);
+              },
+              child: SvgPicture.asset(
+                AppImages.search,
+                height: AppSizes.iconMd,
+                width: AppSizes.iconMd,
+              ),
+            ),
     );
   }
 }

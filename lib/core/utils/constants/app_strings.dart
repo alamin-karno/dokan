@@ -1,8 +1,10 @@
 class AppStrings {
   // -- Authentication Forms
   static const String name = "Username";
-  static const String fullName = "Full Name";
-  static const String fullNameHints = "William Bennett";
+  static const String firstName = "First Name";
+  static const String firstNameHints = "William";
+  static const String lastName = "Last Name";
+  static const String lastNameHints = "Bennett";
   static const String streetAddress = "Street Address";
   static const String streetAddressHints = "465 Nolan Causeway Suite 079";
   static const String aptSuite = "Apt, Suite, Bldg (optional)";

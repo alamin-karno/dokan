@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:dokan/core/common/models/models.dart';
 import 'package:dokan/data/exceptions/exceptions.dart';
 import 'package:dokan/data/network/networks.dart';
 import 'package:flutter/foundation.dart';
@@ -18,10 +19,6 @@ class NetworkApiService extends BaseApiServices {
     bool isUrlEncoded = false,
     bool passToken = false,
   }) async {
-    if (kDebugMode) {
-      log(' - GET: $url', name: 'API');
-    }
-
     dynamic responseJson;
     Map<String, String>? headers;
 
@@ -40,7 +37,8 @@ class NetworkApiService extends BaseApiServices {
 
       responseJson = returnResponse(response);
     } on SocketException {
-      throw InternetException('No Internet connection!');
+      throw InternetException(
+          'Please enable data or wifi connection to continue!');
     } on RequestTimeoutException {
       throw RequestTimeoutException('Request Timeout!');
     } on FormatException catch (e) {
@@ -59,10 +57,6 @@ class NetworkApiService extends BaseApiServices {
     bool isUrlEncoded = false,
     bool passToken = false,
   }) async {
-    if (kDebugMode) {
-      log(' - POST: $url\n - DATA: $data', name: 'API');
-    }
-
     dynamic responseJson;
 
     Map<String, String>? headers;
@@ -83,7 +77,49 @@ class NetworkApiService extends BaseApiServices {
 
       responseJson = returnResponse(response);
     } on SocketException {
-      throw InternetException('No Internet connection!');
+      throw InternetException(
+          'Please enable data or wifi connection to continue!');
+    } on RequestTimeoutException {
+      throw RequestTimeoutException('Request Timeout!');
+    } on FormatException catch (e) {
+      throw AppFormatException(e.message);
+    } on PlatformException catch (e) {
+      throw AppPlatformException(e.code).message;
+    }
+
+    return responseJson;
+  }
+
+  @override
+  Future putApi(
+    String url,
+    dynamic data, {
+    bool isUrlEncoded = false,
+    bool passToken = false,
+  }) async {
+    dynamic responseJson;
+
+    Map<String, String>? headers;
+
+    try {
+      headers = await returnHeaders(
+        passToken: passToken,
+        isUrlEncoded: isUrlEncoded,
+      );
+
+      final response = await http
+          .put(
+            Uri.parse(url),
+            body: returnConvertedData(data: data, isUrlEncoded: isUrlEncoded),
+            headers: headers,
+          )
+          .timeout(const Duration(seconds: 10));
+
+      responseJson = returnResponse(response);
+    } on SocketException {
+      throw InternetException(
+        'Please enable data or wifi connection to continue!',
+      );
     } on RequestTimeoutException {
       throw RequestTimeoutException('Request Timeout!');
     } on FormatException catch (e) {
@@ -96,7 +132,10 @@ class NetworkApiService extends BaseApiServices {
   }
 
   dynamic returnResponse(http.Response response) {
-    log(' - ${response.request?.url} : ${response.statusCode}', name: 'API');
+    if (kDebugMode) {
+      log(' - ${response.request?.method} : ${response.request?.url} : ${response.statusCode}',
+          name: 'API');
+    }
 
     switch (response.statusCode) {
       case 200:
@@ -104,7 +143,14 @@ class NetworkApiService extends BaseApiServices {
         return responseJson;
       case 400:
         dynamic responseJson = jsonDecode(response.body);
-        return responseJson;
+        CommonErrorResponseModel responseModel =
+            CommonErrorResponseModel.fromJson(responseJson);
+        throw BadRequestExceptions(responseModel.message);
+      case 401:
+        dynamic responseJson = jsonDecode(response.body);
+        CommonErrorResponseModel responseModel =
+            CommonErrorResponseModel.fromJson(responseJson);
+        throw BadRequestExceptions(responseModel.message);
       default:
         throw FetchDataException(
           'Error occurred while communicating with server: ${response.statusCode}',
@@ -128,7 +174,7 @@ class NetworkApiService extends BaseApiServices {
     if (passToken) {
       String? token = _deviceStorage.read('token');
       if (token != null && token != '') {
-        headers["Authorization"] = token;
+        headers["Authorization"] = 'Bearer $token';
       }
     }
 

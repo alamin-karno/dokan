@@ -43,11 +43,11 @@ class UpdateProfileFormWidget extends StatelessWidget {
           ),
           const SizedBox(height: AppSizes.spaceBtwInputFields),
 
-          /// Full Name
+          /// First Name
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: AppSizes.xs),
             child: Text(
-              AppStrings.fullName,
+              AppStrings.firstName,
               style: Theme.of(context)
                   .textTheme
                   .titleSmall
@@ -56,9 +56,9 @@ class UpdateProfileFormWidget extends StatelessWidget {
           ),
           const SizedBox(height: AppSizes.spaceBtwItems * 0.5),
           TextFormField(
-            controller: controller.name,
+            controller: controller.firstName,
             validator: (value) =>
-                AppValidator.validateEmptyText(AppStrings.fullName, value),
+                AppValidator.validateEmptyText(AppStrings.firstName, value),
             keyboardType: TextInputType.name,
             textInputAction: TextInputAction.next,
             decoration: const InputDecoration(
@@ -66,7 +66,35 @@ class UpdateProfileFormWidget extends StatelessWidget {
               prefixIconConstraints: BoxConstraints(
                 minWidth: AppSizes.spaceBtwItems * 1.5,
               ),
-              hintText: AppStrings.fullNameHints,
+              hintText: AppStrings.firstNameHints,
+            ),
+          ),
+          const SizedBox(height: AppSizes.spaceBtwInputFields),
+
+          /// Last Name
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: AppSizes.xs),
+            child: Text(
+              AppStrings.lastName,
+              style: Theme.of(context)
+                  .textTheme
+                  .titleSmall
+                  ?.copyWith(color: AppColors.textInputField),
+            ),
+          ),
+          const SizedBox(height: AppSizes.spaceBtwItems * 0.5),
+          TextFormField(
+            controller: controller.lastName,
+            validator: (value) =>
+                AppValidator.validateEmptyText(AppStrings.lastName, value),
+            keyboardType: TextInputType.name,
+            textInputAction: TextInputAction.next,
+            decoration: const InputDecoration(
+              prefixIcon: SizedBox(),
+              prefixIconConstraints: BoxConstraints(
+                minWidth: AppSizes.spaceBtwItems * 1.5,
+              ),
+              hintText: AppStrings.lastNameHints,
             ),
           ),
           const SizedBox(height: AppSizes.spaceBtwInputFields),
@@ -87,7 +115,7 @@ class UpdateProfileFormWidget extends StatelessWidget {
             controller: controller.streetAddress,
             validator: (value) =>
                 AppValidator.validateEmptyText(AppStrings.streetAddress, value),
-            keyboardType: TextInputType.emailAddress,
+            keyboardType: TextInputType.streetAddress,
             textInputAction: TextInputAction.next,
             decoration: const InputDecoration(
               prefixIcon: SizedBox(),
@@ -114,7 +142,7 @@ class UpdateProfileFormWidget extends StatelessWidget {
           TextFormField(
             controller: controller.aptSuite,
             // validator: (value) => AppValidator.validateEmail(value),
-            keyboardType: TextInputType.emailAddress,
+            keyboardType: TextInputType.streetAddress,
             textInputAction: TextInputAction.next,
             decoration: const InputDecoration(
               prefixIcon: SizedBox(),
@@ -144,8 +172,8 @@ class UpdateProfileFormWidget extends StatelessWidget {
               controller: controller.zipCode,
               validator: (value) =>
                   AppValidator.validateEmptyText(AppStrings.zipCode, value),
-              keyboardType: TextInputType.emailAddress,
-              textInputAction: TextInputAction.next,
+              keyboardType: TextInputType.number,
+              textInputAction: TextInputAction.done,
               decoration: const InputDecoration(
                 prefixIcon: SizedBox(),
                 prefixIconConstraints: BoxConstraints(

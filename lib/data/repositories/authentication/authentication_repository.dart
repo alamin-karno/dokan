@@ -3,7 +3,8 @@ import 'package:dokan/core/utils/constants/constants.dart';
 import 'package:dokan/core/utils/local_storage/app_local_storage.dart';
 import 'package:dokan/data/network/networks.dart';
 import 'package:dokan/features/authentication/authentication.dart';
-import 'package:dokan/features/shop/screens/main/main_navigation_menu_screen.dart';
+import 'package:dokan/features/personalization/personalization.dart';
+import 'package:dokan/features/shop/shop.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -13,6 +14,9 @@ class AuthenticationRepository extends GetxController {
 
   final _deviceStorage = GetStorage();
   final _apiService = NetworkApiService();
+
+  final _accountController = Get.put(AccountController());
+  final _homeController = Get.put(HomeController());
 
   @override
   void onReady() {
@@ -26,6 +30,11 @@ class AuthenticationRepository extends GetxController {
 
     if (token != null && token != '') {
       AppLocalStorage.init(token);
+
+      _accountController.loadAccountInfo();
+
+      _homeController.loadJsonData(Get.context!);
+
       Get.offAll(() => const MainNavigationMenuScreen());
     } else {
       Get.offAll(() => const LoginScreen());

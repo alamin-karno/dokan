@@ -66,15 +66,6 @@ class SignupController extends GetxController {
         if (loginResponse != null) {
           _authRepository.screenRedirection();
         }
-      } else if (userResponse != null &&
-          (userResponse.code == 400 || userResponse.code == 406)) {
-        // REMOVE LOADER
-        AppFullScreenLoader.stopLoading();
-
-        AppLoaders.warningSnackBar(
-          title: 'Oh Snap!',
-          message: '${userResponse.message}!',
-        );
       }
     } catch (e) {
       // REMOVE LOADER

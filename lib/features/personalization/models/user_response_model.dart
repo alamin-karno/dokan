@@ -2,10 +2,15 @@ import 'package:dokan/core/common/models/models.dart';
 
 class UserResponseModel {
   int? id;
+  String? username;
   String? name;
+  String? firstName;
+  String? lastName;
+  String? email;
   String? url;
   String? description;
   String? link;
+  String? nickname;
   String? slug;
   AvatarUrls? avatarUrls;
   List<MetaData?>? metaData;
@@ -13,22 +18,37 @@ class UserResponseModel {
 
   UserResponseModel({
     this.id,
+    this.username,
     this.name,
+    this.firstName,
+    this.lastName,
+    this.email,
     this.url,
     this.description,
     this.link,
+    this.nickname,
     this.slug,
     this.avatarUrls,
     this.metaData,
     this.links,
   });
 
+  String? get fullName =>
+      firstName != null && firstName != '' && lastName != null && lastName != ''
+          ? '$firstName $lastName'
+          : null;
+
   UserResponseModel.fromJson(Map<String, dynamic> json) {
     id = json['id']?.toInt();
+    username = json['username']?.toString();
     name = json['name']?.toString();
+    firstName = json['first_name']?.toString();
+    lastName = json['last_name']?.toString();
+    email = json['email']?.toString();
     url = json['url']?.toString();
     description = json['description']?.toString();
     link = json['link']?.toString();
+    nickname = json['nickname']?.toString();
     slug = json['slug']?.toString();
     avatarUrls = (json['avatar_urls'] != null)
         ? AvatarUrls.fromJson(json['avatar_urls'])
@@ -44,10 +64,15 @@ class UserResponseModel {
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
     data['id'] = id;
+    data['username'] = username;
     data['name'] = name;
+    data['first_name'] = firstName;
+    data['last_name'] = lastName;
+    data['email'] = email;
     data['url'] = url;
     data['description'] = description;
     data['link'] = link;
+    data['nickname'] = nickname;
     data['slug'] = slug;
     if (avatarUrls != null) {
       data['avatar_urls'] = avatarUrls!.toJson();

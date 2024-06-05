@@ -10,8 +10,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(HomeController());
-    controller.loadJsonData(context);
+    final controller = HomeController.instance;
     return Scaffold(
       backgroundColor: AppColors.primaryBackground,
       appBar: AppBar(
