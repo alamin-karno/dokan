@@ -2,7 +2,6 @@ import 'package:dokan/core/utils/constants/constants.dart';
 import 'package:dokan/core/utils/helpers/helpers.dart';
 import 'package:dokan/core/utils/popups/popups.dart';
 import 'package:dokan/data/repositories/repositories.dart';
-import 'package:dokan/features/shop/shop.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -13,12 +12,12 @@ class LoginController extends GetxController {
 
   final hidePassword = true.obs;
 
-  final email = TextEditingController();
+  final username = TextEditingController();
   final password = TextEditingController();
 
   GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
 
-  /// Email and Password Signing
+  /// Username and Password Signing
   Future<void> signInWithUserNameAndPassword() async {
     try {
       // LOADING...
@@ -35,23 +34,29 @@ class LoginController extends GetxController {
       }
 
       // FORM VALIDATION
-      /* if (!loginFormKey.currentState!.validate()) {
+      if (!loginFormKey.currentState!.validate()) {
         AppFullScreenLoader.stopLoading();
         return;
-      }*/
+      }
 
-      // LOGIN USER USING EMAIL AND PASSWORD
-      /* await _authRepository.signInWithUserNameAndPassword(
-        email.text.trim(),
+      // LOGIN USER USING USERNAME AND PASSWORD
+      final loginResponse = await _authRepository.signInWithUserNameAndPassword(
+        username.text.trim(),
         password.text.trim(),
-      );*/
+      );
 
-      // REMOVE LOADER
-      AppFullScreenLoader.stopLoading();
+      if (loginResponse != null) {
+        AppFullScreenLoader.stopLoading();
 
-      // REDIRECT
-      // _authRepository.screenRedirection();
-      Get.offAll(() => const MainNavigationMenuScreen());
+        AppLoaders.successSnackBar(
+          title: 'Congratulations',
+          message: 'You have logged in successfully.',
+        );
+
+        _authRepository.screenRedirection();
+      } else {
+        AppFullScreenLoader.stopLoading();
+      }
     } catch (e) {
       AppFullScreenLoader.stopLoading();
       AppLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());

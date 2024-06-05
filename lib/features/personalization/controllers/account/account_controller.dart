@@ -21,6 +21,8 @@ class AccountController extends GetxController {
     showEditAccount.value = !value;
   }
 
+  void loadAccountInfo() {}
+
   Future<void> onSaveAccountInfo() async {
     try {
       // LOADING...

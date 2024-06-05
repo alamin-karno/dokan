@@ -1,11 +1,14 @@
 import 'package:dokan/core/utils/constants/constants.dart';
 import 'package:dokan/core/utils/helpers/helpers.dart';
 import 'package:dokan/core/utils/popups/popups.dart';
+import 'package:dokan/data/repositories/repositories.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 class SignupController extends GetxController {
   static SignupController get instance => Get.find();
+
+  final _authRepository = AuthenticationRepository.instance;
 
   final hidePassword = true.obs;
   final hideConfirmPassword = true.obs;
@@ -21,7 +24,7 @@ class SignupController extends GetxController {
     try {
       // LOADING
       AppFullScreenLoader.openLoadingDialog(
-        'We are processing your information...',
+        'We are creating your account...',
         AppImages.dockerAnimation,
       );
 
@@ -38,39 +41,44 @@ class SignupController extends GetxController {
         return;
       }
 
-      // REGISTER USER IN THE FIREBASE AUTHENTICATION
-      /*final userCredential =
-          await AuthenticationRepository.instance.registerWithEmailAndPassword(
+      // REGISTER USER
+      final userResponse = await _authRepository.registerUser(
+        username.text.trim(),
         email.text.trim(),
         password.text.trim(),
       );
 
-      // SAVE AUTHENTICATE USER INFO TO FIREBASE FIRESTORE
-      final user = UserModel(
-        id: userCredential.user!.uid,
-        firstName: firstName.text.trim(),
-        lastName: lastName.text.trim(),
-        username: userName.text.trim(),
-        email: email.text.trim(),
-        phoneNumber: phoneNumber.text.trim(),
-        profileImage: '',
-      );
+      if (userResponse != null && userResponse.code == 200) {
+        AppLoaders.successSnackBar(
+          title: 'Congratulations',
+          message: '${userResponse.message}!',
+        );
 
-      final userRepository = Get.put(UserRepository());
-      await userRepository.saveUserInfo(user);*/
+        final loginResponse =
+            await _authRepository.signInWithUserNameAndPassword(
+          username.text.trim(),
+          password.text.trim(),
+        );
 
+        // REMOVE LOADER
+        AppFullScreenLoader.stopLoading();
+
+        if (loginResponse != null) {
+          _authRepository.screenRedirection();
+        }
+      } else if (userResponse != null &&
+          (userResponse.code == 400 || userResponse.code == 406)) {
+        // REMOVE LOADER
+        AppFullScreenLoader.stopLoading();
+
+        AppLoaders.warningSnackBar(
+          title: 'Oh Snap!',
+          message: '${userResponse.message}!',
+        );
+      }
+    } catch (e) {
       // REMOVE LOADER
       AppFullScreenLoader.stopLoading();
-
-      // SHOW SUCCESS MESSAGE
-      AppLoaders.successSnackBar(
-        title: 'Congratulations',
-        message: 'Your account has been created! Verify email to continue.',
-      );
-
-      // REDIRECT TO VERIFY EMAIL SCREEN
-      // Get.to(() => VerifyEmailScreen(email: email.text.trim()));
-    } catch (e) {
       // SHOWING GENERIC ERROR TO USER
       AppLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
     }

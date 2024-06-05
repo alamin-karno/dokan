@@ -27,18 +27,19 @@ class LoginFormWidget extends StatelessWidget {
               color: AppColors.white,
               borderRadius: BorderRadius.circular(AppSizes.borderRadiusLg),
               child: TextFormField(
-                controller: controller.email,
-                validator: (value) => AppValidator.validateEmail(value),
+                controller: controller.username,
+                validator: (value) =>
+                    AppValidator.validateEmptyText(AppStrings.name, value),
                 keyboardType: TextInputType.emailAddress,
                 textInputAction: TextInputAction.next,
                 decoration: InputDecoration(
                   prefixIcon: SvgPicture.asset(
-                    AppImages.email,
+                    AppImages.people,
                     height: AppSizes.iconSm,
                     width: AppSizes.iconSm,
                     fit: BoxFit.none,
                   ),
-                  labelText: AppStrings.email,
+                  labelText: AppStrings.name,
                   border: InputBorder.none,
                   enabledBorder: InputBorder.none,
                   focusedBorder: InputBorder.none,

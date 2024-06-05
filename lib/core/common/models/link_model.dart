@@ -1,4 +1,4 @@
-import 'package:dokan/features/shop/shop.dart';
+import 'package:dokan/core/common/models/models.dart';
 
 class LinkModel {
   List<LinkSelf?>? self;

@@ -1,3 +1,4 @@
+import 'package:dokan/core/common/models/models.dart';
 import 'package:dokan/features/shop/shop.dart';
 
 class ProductModel {
@@ -311,9 +312,9 @@ class ProductModel {
     if (images != null) {
       final v = images;
       final arr0 = [];
-      v!.forEach((v) {
+      for (var v in v!) {
         arr0.add(v!.toJson());
-      });
+      }
       data['images'] = arr0;
     }
     data['menu_order'] = menuOrder;

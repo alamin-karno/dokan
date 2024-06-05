@@ -41,7 +41,7 @@ class AppLoaders {
       isDismissible: true,
       shouldIconPulse: true,
       colorText: AppColors.white,
-      backgroundColor: AppColors.primary,
+      backgroundColor: AppColors.success,
       snackPosition: SnackPosition.BOTTOM,
       duration: Duration(seconds: duration),
       margin: const EdgeInsets.all(10),
