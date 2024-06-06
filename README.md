@@ -4,11 +4,16 @@ Dokan is designed to provide a comprehensive e-commerce solution, offering featu
 
 ![Dokan Flutter Application](https://github.com/alamin-karno/dokan/blob/main/assets/logo/dokan-splash-logo-white.png?raw=true)
 
+
 Welcome to the Dokan Flutter Application! This README file provides an overview of the app, its features, setup instructions, and other relevant details.
 
 ## Introduction
 
 The Dokan Flutter Application is designed to provide a seamless shopping experience. It features a user-friendly interface, robust functionality, and smooth performance, making it an ideal solution for online shopping needs.
+
+## Download Application
+
+Download Now: [Dokan-Android-Application.APK](https://github.com/alamin-karno/dokan/releases/download/dokan_v1.0.0/dokan_v1.0.0.apk)
 
 ## Features
 
@@ -45,9 +50,6 @@ Once the application is running, you can explore the following functionalities:
 - **Browse Products**: Explore the product catalog.
 - **Profile**: Manage your profile information.
 
-## Download Application
-
-Download Now: [Dokan-Android-Application.APK]()
 
 ## Screenshots
 
@@ -57,12 +59,11 @@ Here are some screenshots of the Dokan Flutter Application:
 |:------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------------------------------------:|
 |  <img src="https://github.com/alamin-karno/dokan/blob/main/screenshots/dokan_login_screen.png" width="250">  |  <img src="https://github.com/alamin-karno/dokan/blob/main/screenshots/dokan_signup_screen.png" width="250">  |    <img src="https://github.com/alamin-karno/dokan/blob/main/screenshots/dokan_profile_screen.png" width="250">     |
 |                                                 Home Screen                                                  |                                                 Filet Screen                                                  |                                                Update Profile Screen                                                |
-| :----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: |   :------------------------------------------------------------------------------------------------------------:    |
 |  <img src="https://github.com/alamin-karno/dokan/blob/main/screenshots/dokan_home_screen.png" width="250">   |  <img src="https://github.com/alamin-karno/dokan/blob/main/screenshots/dokan_filter_screen.png" width="250">  | <img src="https://github.com/alamin-karno/dokan/blob/main/screenshots/dokan_update_profile_screen.png" width="250"> |
 
 ## Credits
 - Code using Flutter with ❤️ by [Md. Al-Amin](https://github.com/alamin-karno)
-- UI/UX - [Figma](https://www.figma.com/file/lHDVMCVsE6R3NWxxG6Wfbo/Demo?node-id=0%3A)
+- UI/UX File - [Figma](https://www.figma.com/file/lHDVMCVsE6R3NWxxG6Wfbo/Demo?node-id=0%3A)
 
 ## Contact
 
