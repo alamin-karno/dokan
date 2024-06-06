@@ -108,4 +108,10 @@ class AccountController extends GetxController {
       AppLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
     }
   }
+
+  void signOut() {
+    AppPopup.warningDialog(
+      onPositivePressed: () => AuthenticationRepository.instance.signOut(),
+    );
+  }
 }

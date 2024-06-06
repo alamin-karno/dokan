@@ -7,6 +7,7 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = AccountController.instance;
     return Scaffold(
       backgroundColor: AppColors.primaryBackground,
       appBar: AppBar(
@@ -20,21 +21,29 @@ class ProfileScreen extends StatelessWidget {
               ?.copyWith(fontWeight: FontWeight.w600),
         ),
       ),
-      body: const SingleChildScrollView(
+      body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.symmetric(
+          padding: const EdgeInsets.symmetric(
             horizontal: AppSizes.defaultSpace,
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SizedBox(height: AppSizes.spaceBtwSections),
-              ProfileImageWidget(),
-              SizedBox(height: AppSizes.spaceBtwSections),
-              ProfileTitleWidget(),
-              SizedBox(height: AppSizes.spaceBtwSections),
-              ProfileMenuCardWidget(),
-              SizedBox(height: AppSizes.spaceBtwSections),
+              const SizedBox(height: AppSizes.spaceBtwSections),
+              const ProfileImageWidget(),
+              const SizedBox(height: AppSizes.spaceBtwSections),
+              const ProfileTitleWidget(),
+              const SizedBox(height: AppSizes.spaceBtwSections),
+              const ProfileMenuCardWidget(),
+              const SizedBox(height: AppSizes.spaceBtwSections),
+              SizedBox(
+                width: double.infinity,
+                child: OutlinedButton(
+                  onPressed: () => controller.signOut(),
+                  child: const Text('Sign out'),
+                ),
+              ),
+              const SizedBox(height: AppSizes.spaceBtwSections),
             ],
           ),
         ),

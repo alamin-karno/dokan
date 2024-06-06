@@ -2,10 +2,12 @@ import 'dart:math';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dokan/core/utils/constants/constants.dart';
+import 'package:dokan/core/utils/helpers/helpers.dart';
 import 'package:dokan/features/shop/shop.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:shimmer/shimmer.dart';
 
 class ProductCardWidget extends StatelessWidget {
   const ProductCardWidget({super.key, required this.product});
@@ -14,6 +16,9 @@ class ProductCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = AppHelperFunctions.isDarkMode(context);
+    final color = Colors.primaries[Random().nextInt(Colors.primaries.length)]
+        .withOpacity(0.1);
     return Column(
       children: [
         Material(
@@ -25,13 +30,18 @@ class ProductCardWidget extends StatelessWidget {
           child: Container(
             height: 170,
             width: double.infinity,
-            color: Colors.primaries[Random().nextInt(Colors.primaries.length)]
-                .withOpacity(0.1),
+            color: color,
             child: CachedNetworkImage(
               fit: BoxFit.cover,
               imageUrl: product.images?[0]?.src ?? '',
-              placeholder: (context, url) => const Center(
-                child: CircularProgressIndicator(),
+              placeholder: (context, url) => Shimmer.fromColors(
+                baseColor: isDark ? Colors.grey[850]! : Colors.grey[300]!,
+                highlightColor: isDark ? Colors.grey[700]! : Colors.grey[100]!,
+                child: const Icon(
+                  Icons.image,
+                  color: AppColors.darkGrey,
+                  size: AppSizes.iconLg * 2,
+                ),
               ),
               errorWidget: (context, url, error) => const Icon(
                 Icons.image,
@@ -45,6 +55,7 @@ class ProductCardWidget extends StatelessWidget {
           child: Material(
             color: AppColors.white,
             elevation: 1.5,
+            shadowColor: color,
             borderRadius: const BorderRadius.only(
               bottomLeft: Radius.circular(AppSizes.borderRadiusLg),
               bottomRight: Radius.circular(AppSizes.borderRadiusLg),

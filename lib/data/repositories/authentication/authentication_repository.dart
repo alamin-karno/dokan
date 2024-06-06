@@ -25,11 +25,11 @@ class AuthenticationRepository extends GetxController {
     super.onReady();
   }
 
-  void screenRedirection() {
+  Future<void> screenRedirection() async {
     String? token = _deviceStorage.read('token');
 
     if (token != null && token != '') {
-      AppLocalStorage.init(token);
+      await AppLocalStorage.init(token);
 
       _accountController.loadAccountInfo();
 
@@ -83,5 +83,10 @@ class AuthenticationRepository extends GetxController {
     }
 
     return commonResponseModel;
+  }
+
+  Future<void> signOut() async {
+    await _deviceStorage.remove('token');
+    screenRedirection();
   }
 }

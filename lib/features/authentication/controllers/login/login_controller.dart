@@ -17,6 +17,13 @@ class LoginController extends GetxController {
 
   GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
 
+  void forgetPassword() {
+    AppLoaders.warningSnackBar(
+      title: 'Oops!',
+      message: AppStrings.forgetPasswordWaring,
+    );
+  }
+
   /// Username and Password Signing
   Future<void> signInWithUserNameAndPassword() async {
     try {
@@ -64,8 +71,18 @@ class LoginController extends GetxController {
   }
 
   /// Google Signing
-  void signInWithGoogle() {}
+  void signInWithGoogle() {
+    AppLoaders.warningSnackBar(
+      title: 'Oops!',
+      message: AppStrings.googleWarning,
+    );
+  }
 
   /// Facebook Signing
-  void signInWithFacebook() {}
+  void signInWithFacebook() {
+    AppLoaders.warningSnackBar(
+      title: 'Oops!',
+      message: AppStrings.facebookWarning,
+    );
+  }
 }

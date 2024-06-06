@@ -49,7 +49,7 @@ class SocialButtonsWidget extends StatelessWidget {
                 foregroundColor: AppColors.white,
                 side: BorderSide.none,
               ),
-              onPressed: () => controller.signInWithFacebook(),
+              onPressed: () => controller.signInWithGoogle(),
               child: SvgPicture.asset(
                 AppImages.google,
                 height: AppSizes.iconMd,

@@ -1,4 +1,5 @@
 import 'package:dokan/core/utils/constants/constants.dart';
+import 'package:dokan/features/authentication/authentication.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -17,7 +18,7 @@ class AddProfileImageWidget extends StatelessWidget {
             ),
             clipBehavior: Clip.antiAlias,
             child: InkWell(
-              onTap: () {},
+              onTap: () => SignupController.instance.chooseImage(),
               child: SizedBox(
                 height: 120,
                 width: 120,
@@ -40,7 +41,7 @@ class AddProfileImageWidget extends StatelessWidget {
               color: AppColors.primary,
               clipBehavior: Clip.antiAlias,
               child: InkWell(
-                onTap: () {},
+                onTap: () => SignupController.instance.chooseImage(),
                 child: Container(
                   height: 34,
                   width: 34,

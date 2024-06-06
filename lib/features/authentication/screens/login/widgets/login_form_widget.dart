@@ -92,8 +92,7 @@ class LoginFormWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 TextButton(
-                  // onPressed: () => Get.to(() => const ForgetPasswordScreen()),
-                  onPressed: () {},
+                  onPressed: () => controller.forgetPassword(),
                   child: const Text(
                     AppStrings.forgetPassword,
                     style: TextStyle(color: AppColors.darkGrey),

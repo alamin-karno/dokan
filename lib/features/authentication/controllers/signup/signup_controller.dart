@@ -20,6 +20,13 @@ class SignupController extends GetxController {
 
   GlobalKey<FormState> signupFormKey = GlobalKey<FormState>();
 
+  void chooseImage() {
+    AppLoaders.warningSnackBar(
+      title: 'Oops!',
+      message: AppStrings.imageChooseWaring,
+    );
+  }
+
   Future<void> signup() async {
     try {
       // LOADING
